@@ -1,4 +1,3 @@
-
 exports.requestHandler = function(request, response) {
   var storage = require("./data.js");
   var url = request.url;
@@ -14,7 +13,6 @@ exports.requestHandler = function(request, response) {
     "access-control-max-age": 10, // Seconds.
     "Content-Type": "application/json"
   };
-
 
   if (url === '/classes/room1') {
     response.writeHead(statusCode, headers);
@@ -39,7 +37,7 @@ exports.requestHandler = function(request, response) {
       });
 
     }
-    if(request.method === "OPTIONS"){
+    if (request.method === "OPTIONS") {
       response.writeHead(statusCode, headers);
       response.end(null);
     }
