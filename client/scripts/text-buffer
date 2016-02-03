@@ -1,0 +1,42 @@
+api.parse.org/1/classes/chatterbox/roomname=
+
+
+app.fetch = function(callback, '/roomname') {
+  $.ajax({
+    url: queryParams === undefined ? app.server : app.server + queryParams,
+    type: 'GET',
+    contentType: 'application/json',
+    success: function(data) {
+      console.log('chatterbox: Fetched. Data: ', data);
+      callback(data.results);
+    },
+    error: function() {
+      console.log('chatterbox: Failed to fetch data. Error');
+    }
+  });
+};
+
+$.ajax({
+  url: api.parse.org/1/classes/chatterbox/roomname,
+  type: 'GET',
+  contentType: 'application/json',
+  success: function(data) {
+    console.log('chatterbox: Fetched. Data: ', data);
+  },
+  error: function() {
+    console.log('chatterbox: Failed to fetch data. Error');
+  }
+});
+
+data.filter(function(message) {
+  if (selectedRoom === 'All Rooms') {
+    return true;
+  } else if (message.roomname === selectedRoom) {
+    return true;
+  } else {
+    return false;
+  }
+
+  data.filter(function(message) {
+    return (selectedRoom === 'All Rooms') || message.roomname === selectedRoom)
+  }
